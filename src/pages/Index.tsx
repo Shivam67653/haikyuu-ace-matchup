@@ -20,13 +20,17 @@ const Index = () => {
     // Simulate AI generation delay for dramatic effect
     await new Promise(resolve => setTimeout(resolve, 2000));
 
-    const team1Quote = generateQuote(selectedTeam1.id, selectedTeam1.players[0]);
-    const team2Quote = generateQuote(selectedTeam2.id, selectedTeam2.players[0]);
+    const team1Character = selectedTeam1.characters[Math.floor(Math.random() * selectedTeam1.characters.length)];
+    const team2Character = selectedTeam2.characters[Math.floor(Math.random() * selectedTeam2.characters.length)];
+    const team1Quote = generateQuote(selectedTeam1.id, team1Character.name);
+    const team2Quote = generateQuote(selectedTeam2.id, team2Character.name);
     const { narration, winner, score } = generateMatchNarration(selectedTeam1, selectedTeam2);
 
     setMatchResult({
       team1: selectedTeam1,
       team2: selectedTeam2,
+      team1Character,
+      team2Character,
       team1Quote,
       team2Quote,
       narration,

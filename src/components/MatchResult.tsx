@@ -2,17 +2,13 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Download, RefreshCw } from "lucide-react";
 
-interface Team {
-  id: string;
-  name: string;
-  logo: string;
-  colors: string;
-  players: string[];
-}
+import { Team, Character } from "@/data/teams";
 
 interface MatchResultProps {
   team1: Team;
   team2: Team;
+  team1Character: Character;
+  team2Character: Character;
   team1Quote: string;
   team2Quote: string;
   narration: string;
@@ -24,6 +20,8 @@ interface MatchResultProps {
 export const MatchResult = ({
   team1,
   team2,
+  team1Character,
+  team2Character,
   team1Quote,
   team2Quote,
   narration,
@@ -31,14 +29,25 @@ export const MatchResult = ({
   score,
   onNewMatch
 }: MatchResultProps) => {
-  const downloadPoster = () => {
-    // Implementation for downloading poster would go here
-    console.log("Download poster functionality");
+  const downloadPoster = async () => {
+    const html2canvas = (await import('html2canvas')).default;
+    const posterElement = document.getElementById('match-poster');
+    if (posterElement) {
+      const canvas = await html2canvas(posterElement, {
+        backgroundColor: '#0f172a',
+        scale: 2,
+        logging: false
+      });
+      const link = document.createElement('a');
+      link.download = `haikyuu-match-${team1.name.replace(/\s+/g, '-')}-vs-${team2.name.replace(/\s+/g, '-')}.png`;
+      link.href = canvas.toDataURL();
+      link.click();
+    }
   };
 
   return (
     <div className="slide-in">
-      <Card className="match-card p-8 max-w-4xl mx-auto">
+      <Card id="match-poster" className="match-card p-8 max-w-4xl mx-auto">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
             MATCH RESULT
@@ -60,10 +69,17 @@ export const MatchResult = ({
             </div>
             <h3 className="text-xl font-bold mb-2">{team1.name}</h3>
             <div className="bg-secondary/50 p-4 rounded-lg">
+              <div className="flex items-center gap-3 mb-3">
+                <img 
+                  src={team1Character.image} 
+                  alt={team1Character.name}
+                  className="w-12 h-12 rounded-full object-cover border-2 border-primary/30"
+                />
+                <div>
+                  <p className="text-sm font-semibold">{team1Character.name}</p>
+                </div>
+              </div>
               <p className="text-sm italic">"{team1Quote}"</p>
-              <p className="text-xs text-muted-foreground mt-2">
-                - {team1.players[Math.floor(Math.random() * team1.players.length)]}
-              </p>
             </div>
           </div>
 
@@ -91,10 +107,17 @@ export const MatchResult = ({
             </div>
             <h3 className="text-xl font-bold mb-2">{team2.name}</h3>
             <div className="bg-secondary/50 p-4 rounded-lg">
+              <div className="flex items-center gap-3 mb-3">
+                <img 
+                  src={team2Character.image} 
+                  alt={team2Character.name}
+                  className="w-12 h-12 rounded-full object-cover border-2 border-primary/30"
+                />
+                <div>
+                  <p className="text-sm font-semibold">{team2Character.name}</p>
+                </div>
+              </div>
               <p className="text-sm italic">"{team2Quote}"</p>
-              <p className="text-xs text-muted-foreground mt-2">
-                - {team2.players[Math.floor(Math.random() * team2.players.length)]}
-              </p>
             </div>
           </div>
         </div>

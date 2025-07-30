@@ -2,13 +2,29 @@ import karasunoLogo from "@/assets/karasuno-logo.jpg";
 import nekomaLogo from "@/assets/nekoma-logo.jpg";
 import aobaLogo from "@/assets/aoba-logo.jpg";
 import shiratorizawaLogo from "@/assets/shiratorizawa-logo.jpg";
+import fukurodaniLogo from "@/assets/fukurodani-logo.jpg";
+import inarizakiLogo from "@/assets/inarizaki-logo.jpg";
+
+// Character images
+import hinataImg from "@/assets/characters/hinata.jpg";
+import kageyamaImg from "@/assets/characters/kageyama.jpg";
+import oikawaImg from "@/assets/characters/oikawa.jpg";
+import kurooImg from "@/assets/characters/kuroo.jpg";
+import ushijimaImg from "@/assets/characters/ushijima.jpg";
+import bokutoImg from "@/assets/characters/bokuto.jpg";
+import atsumuImg from "@/assets/characters/atsumu.jpg";
+
+export interface Character {
+  name: string;
+  image: string;
+}
 
 export interface Team {
   id: string;
   name: string;
   logo: string;
   colors: string;
-  players: string[];
+  characters: Character[];
 }
 
 export const teams: Team[] = [
@@ -17,32 +33,82 @@ export const teams: Team[] = [
     name: "Karasuno High",
     logo: karasunoLogo,
     colors: "team-karasuno",
-    players: ["Hinata", "Kageyama", "Daichi", "Asahi", "Nishinoya"]
+    characters: [
+      { name: "Hinata Shoyo", image: hinataImg },
+      { name: "Kageyama Tobio", image: kageyamaImg },
+      { name: "Daichi Sawamura", image: hinataImg },
+      { name: "Asahi Azumane", image: kageyamaImg },
+      { name: "Nishinoya Yu", image: hinataImg }
+    ]
   },
   {
     id: "nekoma",
-    name: "Nekoma High",
+    name: "Nekoma High", 
     logo: nekomaLogo,
     colors: "team-nekoma",
-    players: ["Kenma", "Kuroo", "Yamamoto", "Yaku", "Fukunaga"]
+    characters: [
+      { name: "Kuroo Tetsurou", image: kurooImg },
+      { name: "Kenma Kozume", image: kurooImg },
+      { name: "Yamamoto Taketora", image: kurooImg },
+      { name: "Yaku Morisuke", image: kurooImg },
+      { name: "Fukunaga Shohei", image: kurooImg }
+    ]
   },
   {
-    id: "aoba-johsai",
+    id: "aoba-johsai", 
     name: "Aoba Johsai",
     logo: aobaLogo,
     colors: "team-aoba",
-    players: ["Oikawa", "Iwaizumi", "Hanamaki", "Matsukawa", "Kyotani"]
+    characters: [
+      { name: "Oikawa Tooru", image: oikawaImg },
+      { name: "Iwaizumi Hajime", image: oikawaImg },
+      { name: "Hanamaki Takahiro", image: oikawaImg },
+      { name: "Matsukawa Issei", image: oikawaImg },
+      { name: "Kyotani Kentaro", image: oikawaImg }
+    ]
   },
   {
     id: "shiratorizawa",
     name: "Shiratorizawa",
     logo: shiratorizawaLogo,
-    colors: "team-shiratorizawa",
-    players: ["Ushijima", "Tendou", "Semi", "Shirabu", "Goshiki"]
+    colors: "team-shiratorizawa", 
+    characters: [
+      { name: "Ushijima Wakatoshi", image: ushijimaImg },
+      { name: "Tendou Satori", image: ushijimaImg },
+      { name: "Semi Eita", image: ushijimaImg },
+      { name: "Shirabu Kenjirou", image: ushijimaImg },
+      { name: "Goshiki Tsutomu", image: ushijimaImg }
+    ]
+  },
+  {
+    id: "fukurodani",
+    name: "Fukurodani Academy",
+    logo: fukurodaniLogo,
+    colors: "team-fukurodani",
+    characters: [
+      { name: "Bokuto Koutarou", image: bokutoImg },
+      { name: "Akaashi Keiji", image: bokutoImg },
+      { name: "Konoha Akinori", image: bokutoImg },
+      { name: "Komi Haruki", image: bokutoImg },
+      { name: "Washio Tatsuki", image: bokutoImg }
+    ]
+  },
+  {
+    id: "inarizaki",
+    name: "Inarizaki High",
+    logo: inarizakiLogo,
+    colors: "team-inarizaki", 
+    characters: [
+      { name: "Miya Atsumu", image: atsumuImg },
+      { name: "Miya Osamu", image: atsumuImg },
+      { name: "Kita Shinsuke", image: atsumuImg },
+      { name: "Suna Rintarou", image: atsumuImg },
+      { name: "Ojiro Aran", image: atsumuImg }
+    ]
   }
 ];
 
-export const generateQuote = (teamId: string, playerName: string): string => {
+export const generateQuote = (teamId: string, characterName: string): string => {
   const quotes: { [key: string]: string[] } = {
     karasuno: [
       "Being the best decoy ever is as cool as being the ace!",
@@ -71,6 +137,20 @@ export const generateQuote = (teamId: string, playerName: string): string => {
       "Overwhelming power is the best strategy!",
       "Paradise found on the left!",
       "Guess monsters are only human after all."
+    ],
+    fukurodani: [
+      "Hey, hey, hey! I'm in top form today!",
+      "When I'm on a roll, I'm unstoppable!",
+      "I'm the ace! Leave it to me!",
+      "Just watch me! I'll blow your mind!",
+      "Normal people think in a normal way!"
+    ],
+    inarizaki: [
+      "We don't need memories of our past wins!",
+      "Being called a genius is a curse, y'know?",
+      "I'm gonna set for you until you're sick of it!",
+      "Everyone's watching us, so let's give them a show!",
+      "Volleyball is a team sport, but it starts with individual skill!"
     ]
   };
 

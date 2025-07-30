@@ -1,13 +1,9 @@
 import { Card } from "@/components/ui/card";
 
+import { Team } from "@/data/teams";
+
 interface TeamCardProps {
-  team: {
-    id: string;
-    name: string;
-    logo: string;
-    colors: string;
-    players: string[];
-  };
+  team: Team;
   isSelected: boolean;
   onClick: () => void;
 }
@@ -31,7 +27,7 @@ export const TeamCard = ({ team, isSelected, onClick }: TeamCardProps) => {
         <div className="absolute inset-0 bg-black/20" />
         <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
           <h3 className="text-lg font-bold text-white">{team.name}</h3>
-          <p className="text-sm text-white/80">{team.players.join(', ')}</p>
+          <p className="text-sm text-white/80">{team.characters.map(c => c.name.split(' ')[0]).join(', ')}</p>
         </div>
         {isSelected && (
           <div className="absolute top-2 right-2">

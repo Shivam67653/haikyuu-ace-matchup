@@ -85,6 +85,8 @@ export default {
 				'gradient-nekoma': 'var(--gradient-nekoma)',
 				'gradient-aoba': 'var(--gradient-aoba)',
 				'gradient-shiratorizawa': 'var(--gradient-shiratorizawa)',
+				'gradient-fukurodani': 'var(--gradient-fukurodani)',
+				'gradient-inarizaki': 'var(--gradient-inarizaki)',
 				'gradient-court': 'var(--gradient-court)'
 			},
 			borderRadius: {
