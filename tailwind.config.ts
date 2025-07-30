@@ -26,7 +26,8 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					glow: 'hsl(var(--primary-glow))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -61,7 +62,30 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				karasuno: {
+					DEFAULT: 'hsl(var(--karasuno))',
+					secondary: 'hsl(var(--karasuno-secondary))'
+				},
+				nekoma: {
+					DEFAULT: 'hsl(var(--nekoma))',
+					secondary: 'hsl(var(--nekoma-secondary))'
+				},
+				aoba: {
+					DEFAULT: 'hsl(var(--aoba-johsai))',
+					secondary: 'hsl(var(--aoba-secondary))'
+				},
+				shiratorizawa: {
+					DEFAULT: 'hsl(var(--shiratorizawa))',
+					secondary: 'hsl(var(--shiratorizawa-secondary))'
 				}
+			},
+			backgroundImage: {
+				'gradient-karasuno': 'var(--gradient-karasuno)',
+				'gradient-nekoma': 'var(--gradient-nekoma)',
+				'gradient-aoba': 'var(--gradient-aoba)',
+				'gradient-shiratorizawa': 'var(--gradient-shiratorizawa)',
+				'gradient-court': 'var(--gradient-court)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
